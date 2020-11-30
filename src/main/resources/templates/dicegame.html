@@ -1,20 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Dice Game</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 </head>
 <body>
-<h1>Dice Game</h1>
-<h2>Click on the links to take your guess at what the random number generator will land on</h2>
-<form action="/roll-dice/n" method="get">
-    <button type="button" class="btn btn-outline-primary btn-lg">1</button>
-    <button type="button" class="btn btn-outline-secondary btn-lg">2</button>
-    <button type="button" class="btn btn-outline-success btn-lg">3</button>
-    <button type="button" class="btn btn-outline-danger btn-lg">4</button>
-    <button type="button" class="btn btn-outline-warning btn-lg">5</button>
-    <button type="button" class="btn btn-outline-info btn-lg">6</button>
-</form>
+<div class="row">
+    <div class="col-sm-12"><h1>Dice Game</h1></div>
+</div>
+<div class="row">
+    <div class="col-sm"><h2>Click on the links to take your guess at what the random number generator will land on</h2></div>
+    <div class="col-sm">
+
+        <a class="btn btn-outline-primary btn-lg" th:href="@{/roll-dice/1}" role="button">1</a>
+        <a class="btn btn-outline-secondary btn-lg" th:href="@{/roll-dice/2}" role="button">2</a>
+        <a class="btn btn-outline-success btn-lg" th:href="@{/roll-dice/3}" role="button">3</a>
+        <a class="btn btn-outline-danger btn-lg" th:href="@{/roll-dice/4}" role="button">4</a>
+        <a class="btn btn-outline-warning btn-lg" th:href="@{/roll-dice/5}" role="button">5</a>
+        <a class="btn btn-outline-info btn-lg" th:href="@{/roll-dice/6}" role="button">6</a>
+
+        <!--<button th:href="@{/roll-dice/1}" type="button" class="btn btn-outline-primary btn-lg" name="roll" value="1">1</button>-->
+        <!--<button th:href="@{/roll-dice/2}" type="button" class="btn btn-outline-secondary btn-lg" name="roll" value="2">2</button>-->
+        <!--<button th:href="@{/roll-dice/3}" type="button" class="btn btn-outline-success btn-lg" name="roll" value="3">3</button>-->
+        <!--<button th:href="@{/roll-dice/4}" type="button" class="btn btn-outline-danger btn-lg" name="roll" value="4">4</button>-->
+        <!--<button th:href="@{/roll-dice/5}" type="button" class="btn btn-outline-warning btn-lg" name="roll" value="5">5</button>-->
+        <!--<button th:href="@{/roll-dice/6}" type="button" class="btn btn-outline-info btn-lg" name="roll" value="6">6</button>-->
+    </div>
+    <div class="col-sm"><h1 th:text="${roll}"></h1>
+    <div th:if="${guess}">
+        Your Guess was <span th:text="${guess}">.</span><br>
+        The rolled number is <span th:text="${dice}"></span>
+    </div>
+    </div>
+</div>
 </body>
 </html>
